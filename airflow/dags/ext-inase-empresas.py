@@ -15,8 +15,9 @@ from scripts.upload_to_drive import upload_to_drive
 
 default_args = {
     "owner": "Data",
-    "start_date": days_ago(1),
     "depends_on_past": False,
+    "start_date": "2024-08-01",
+    "schedule_interval": "@weekly",
     "retries": 1,
 }
 
@@ -24,7 +25,6 @@ dag = DAG(
     "upload_csv_to_drive",
     default_args=default_args,
     description="Generate CSV and upload to Google Drive",
-    schedule_interval=None,
 )
 
 start_task = DummyOperator(

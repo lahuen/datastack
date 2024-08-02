@@ -5,8 +5,6 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.utils.dates import days_ago
 from airflow.models import Variable
-
-# Ajusta la ruta del script si es necesario
 import sys
 import os
 
@@ -16,7 +14,8 @@ from scripts.upload_to_drive import upload_to_drive
 
 default_args = {
     "owner": "Data",
-    "start_date": days_ago(1),
+    "start_date": "2024-08-01",
+    "schedule_interval": "@weekly",
     "depends_on_past": False,
     "retries": 1,
 }
